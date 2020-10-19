@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Diplomová práce - Informační systém sportovního lékaře</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/main.css" />
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script>
+        var shiftWindow = function() { scrollBy(0,-110) };
+        window.addEventListener("hashchange", shiftWindow);
+        function load() { if (window.location.hash) shiftWindow();}
+    </script>
+
+</head>
+  <body class="body" onload="load()">
+    <!-- Navigace -->
+        <nav class="navbar navbar-expand-lg nav-back fixed-top" id="nav">
+            <div class="container">
+                <a class="navbar-brand" href="#" id="logo_velke">
+                    <img src="/img/logo.png" width="100" height="80" alt="">
+                  </a>
+                <a class="navbar-brand" href="#" id="logo_male">
+                    <img src="/img/logo_male.png" width="350" height="80"  alt="">
+                </a> 
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">+</span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="navbar-nav ml-left">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">Domů</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#aboutus" class="nav-link">O nás</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#servicies" class="nav-link">Služby</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#price" class="nav-link">Ceník</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#contact" class="nav-link">Kontakt</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <span class="nav-link" id="uzivatelPrihlasen" style="font-size:15px; color:lightgray;">lukas.tvrz@ssw.cz</span>
+                        </li>
+                        <li class="nav-item" >
+                            <a href="login.html"><button id="myButton" class="btn-outline-login" style="display: none;">
+                            Přihlásit
+                            </button></a>
+                        </li>
+
+                        <li class="nav-item" style="display: inline;">
+                            <button id="myButton" class="btn-outline-logout">
+                            Odhlásit
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    <!-- Hlavní obrázek na stránce -->
+
+        <section id="image" class="d-flex align-items-center"> 
+            <div class="container text-center position-relative">
+                <!--<h1>Jste rekreační běžec, cyklista nebo triatlonista? </h1>-->
+                <h1>Centrum zdraví a zdravého pohybu</h1>
+                <h2 class="text-uppercase">Chcete zlepšit kondici, životní styl nebo se zbavit kil navíc?</h2>
+                <button id="linkButton" class="btn-outline-link"> 
+                    Chci se objednat
+                </button>
+            </div>
+        </section>
+
+    <!-- Hlavní sekce stránky ( nepřihlášený uživatel (statická) -->
+
+        <section id="aboutus" class="aboutus mt-5 mb-2 py-3">
+            <div class="container">
+                <h2 class="text-left">O nás</h2>
+                <p id="plaintext">Ústav preventivního a sportovního lékařství (ÚPSL) byl založen v roce 1993 na půdě Fakulty tělesné výchovy a sportu Univerzity Karlovy jako jedno z prvních nestátních zdravotnických zařízení. Na našem pracovišti se vám věnují lékaři z oborů tělovýchovného lékařství, rehabilitace, kardiologie a vnitřního lékařství, kteří úzce spolupracující s týmem fyzioterapeutů. Jsme vybaveni moderními diagnostickými i terapeutickými přístroji. Staráme se o širokou veřejnost i profesionální sportovce.
+
+                </p>   
+                <p id="plaintext">Ať už hledáte pomoc pro úlevu od bolesti, zlepšení tělesné kondice či zvýšení úrovně sportovního výkonu, obraťte se na naše specialisty. 
+                </p>
+            </div>
+        </section>
+
+        <section id="servicies" class="services mt-5 mb-2 py-3">
+            <div class="container">
+                <div class="section-title">
+                    <h2 class="text-left">Služby</h2>
+                    <p id="plaintext">Nabízíme komplexní služby pro rekreační i výkonnostní běžce, cyklisty, triatlonisty a všechny, kdo chtějí získat kondici a zdraví. 
+                    </p>
+                    <p class="podnadpis text-left">Trénujte správně a bez rizika!</p>
+                    <p id="plaintext">Všechny služby (funkční vyšetření, analýzy techniky pohybu, fyzioterapii, tréninkové plány, výživové poradenství...) nabízíme samostatně nebo v oblíbených balíčcích.</p>
+                </div>
+                
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                        <div class="service shadow" id="box">
+                            <div class="icon">
+                                <img src="/img/run.jpg" alt="">
+                            </div>
+                            <h4>Běh</h4>
+                                <p>Služby pro rekreační i výkonnostní běžce</p>
+                            <button id="run-button" class="btn-outline-link"> 
+                                Zjistit více..
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                        <div class="service shadow">
+                            <div class="icon">
+                                <img src="/img/bike.jpg" alt="">
+                            </div>
+                            <h4>Cyklistika & Triatlon</h4>
+                                <p>Funkční vyšetření, tréninkové plány...</p>
+                            <button id="bike-button" class="btn-outline-link"> 
+                                    Zjistit více..
+                                </button>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                        <div class="service shadow">
+                            <div class="icon">
+                                <img src="/img/yoga.jpg" alt="">
+                            </div>
+                            <h4>Pohyb & cvičení & fitness</h4>
+                                <p>Individuální cvičení s trenérem...</p>
+                                <button id="yoga-button" class="btn-outline-link"> 
+                                    Zjistit více..
+                                </button>
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                        <div class="service shadow">
+                            <div class="icon">
+                                <img src="/img/fyzio.jpg" alt="">
+                            </div>
+                            <h4>Fyzioterapie & Léčba pohybem</h4>
+                                <p>Bolí Vás záda, krční páteř....?</p>
+                                <button id="fyzio-button" class="btn-outline-link"> 
+                                    Zjistit více..
+                                </button>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                        <div class="service shadow">
+                            <div class="icon">
+                                <img src="/img/vyziva.jpg" alt="">
+                            </div>
+                            <h4>Výživové poradenství</h4>
+                                <p>Určení tělesné skladby, individuální výživová strategie</p>
+                                <button id="food-button" class="btn-outline-link"> 
+                                    Zjistit více..
+                                </button>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                        <div class="service shadow">
+                            <div class="icon">
+                                <img src="/img/lifestyle.jpg" alt="">
+                            </div>
+                            <h4>Poradenství v oblastni životního stylu</h4>
+                                <p>Životní styl....</p>
+                                <button id="life-button" class="btn-outline-link"> 
+                                    Zjistit více..
+                                </button>
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+            </div>
+        </section>
+
+        <section id="price" class="price mt-5 mb-2 py-3">
+            <div class="container">
+                <h2 class="text-left">Ceník</h2>
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Služba</th>
+                        <th>Cena</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Poradenství v oblasti životního stylu</td>
+                        <td>1200,-</td>
+                      </tr>
+                      <tr>
+                        <td>Funkční diagnostika - vyšetření laktátové křivky + analýza tělesné skladby + konzultace</td>
+                        <td>1900,-</td>
+                      </tr>
+                      <tr>
+                        <td style="color:red;font-style: italic;">Funkční diagnostika - vyšetření laktátové křivky - opakované vyšetření do 12 měsíců</td>
+                        <td>1700,-</td>
+                      </tr>
+                      <tr>
+                        <td>Vstupní vyšetření pohybového aparátu fyzioterapeutem (1 hodina)</td>
+                        <td>1250,-</td>
+                      </tr>
+                      <tr>
+                        <td>Fyzioterapie (1hodina)</td>
+                        <td>1000,-</td>
+                      </tr>
+                      <tr>
+                        <td>Fyzioterapie pro děti (30 minut)</td>
+                        <td>550,-</td>
+                      </tr>
+                      <tr>
+                        <td>Analýza tělesné skladby + konzultace</td>
+                        <td>300,-</td>
+                      </tr>
+                      <tr>
+                        <td>Modelace ortopedických stélek</td>
+                        <td>1800,-</td>
+                      </tr>
+                      <tr>
+                        <td>Základní výživové poradenství + analýza tělesné skladby</td>
+                        <td>1600,-</td>
+                      </tr>
+                      <tr>
+                        <td>Výživové poradenství s kontrolní konzultací</td>
+                        <td>2900,-</td>
+                      </tr>
+                      <tr>
+                        <td>Výživové poradneství se dvěma kontrolními konzultacemi a jídelníčkem na 3 dny</td>
+                        <td>5800,-</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-title text-left mt-5">
+                    <h2>Kontakt</h2>
+                    <p>Provozní doba: PO-PÁ 7:00 - 22:00</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="contact-box">
+                                    <h3>Adresa</h3>
+                                    <p>Poděbradská 10 <br>PSČ: 190 00 -  Praha 9</p>
+                                </div>
+                            </div>
+                            <div class="contactbox col-md-6">
+                                <div class="contact-box mt-4">
+                                    <h3>Email</h3>
+                                    <p>test@email.cz
+                                    <br>contact@email.cz </p>
+                                </div>
+                            </div>
+                            <div class="contactbox col-md-6">
+                                <div class="contact-box mt-4">
+                                    <h3>Telefon</h3>
+                                    <p>+ 420 606 123 123<br>+ 420 226 123 123</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 md-2">
+                        <form action="">
+                            <div class="form-row">
+                                <div class="col-md-6 form-group">
+                                    <input type="text" name="text" class="form-control"
+                                    id="name" placeholder="Jméno">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input type="email" class="form-control" name="email"
+                                    id="email" placeholder="E-mail">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="subject"
+                                placeholder="Předmět">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" class="form-control" rows="5"></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit">Odeslat zprávu</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer py-4 mt-5">
+            <div class="container">
+                <div class="row align-items-center">
+                        <div class="col-lg-4 text-lg-center">
+                                Copyright &copy; Lukáš Tvrz 2020
+                        </div>
+                        <div class="col-lg-4 my-3 my-lg-0">
+                                <a href="#" class="btn btn-back btn-social mx-2">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                        </div>
+                </div>
+            </div>
+        </footer>
+
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
