@@ -1,10 +1,31 @@
 .body{
     font-family: 'Montserrat';
+    background-color: rgb(235, 235, 235);
 }
 
 .body-login{
     font-family: 'Montserrat';
     background-color: rgb(235, 235, 235);
+}
+
+.box{
+    background: white;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.book{
+    width: 600px; 
+    padding: 10px;
+    margin: 0 auto;
+    background:white;
+    margin-top:20px;
+}
+
+.book button{
+    width: 180px;
+    margin: 5px;
 }
 
 .nav-back{
@@ -71,7 +92,7 @@
     letter-spacing: 0.5px;
 }
 
-.btn-outline-login, .btn-outline-link, .btn-outline-logout {
+.btn-outline-login, .btn-outline-link, .btn-outline-logout, .btn-outline-register {
     display: inline-block;
     font-weight: 400;
     text-align: center;
@@ -86,13 +107,24 @@
     font-size: 1rem;
     line-height: 1.5;
     border-radius: 0.25rem;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+.btn-outline-register{
+    color: white;
+    background: linear-gradient(to right, #a517ba, #5f1782);
+}
+
+.btn-outline-register:hover{
+    color: white;
+    background: #a417ba65;
+}
+
+.btn-outline-login, .btn-outline-link, .btn-outline-logout{
     color: white;
     background-color: transparent;
     background-image: none;
     border-color: white;
-  }
-
+}
 .btn-outline-login:hover, .btn-outline-link:hover{
     color: #fff;
     background-color: #a517ba;
@@ -146,7 +178,7 @@ margin-bottom: 0;
 .icon img{
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 180px;
     margin-top: 0;
 }
 
@@ -163,6 +195,10 @@ margin-bottom: 0;
     box-shadow: black;
     padding: 20px 0 30px 0;
     background: linear-gradient(to right, #a517ba, #5f1782);
+}
+
+.ta textarea{
+    resize: none;
 }
 
 .contact-box h3{
@@ -198,22 +234,27 @@ margin-bottom: 0;
 }
 
 .wrapper{
-    margin: 80px;
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
+#wrapper_small{
+    max-width: 300px;
+}
+/*
 .form-signin{
     max-width: 380px;
     margin: 0 auto;
     padding: 15px 40px 50px;
     background-image: linear-gradient(to right, #a517ba, #5f1782);
     color: white;
-}
-.form-signin, .form-signin-heading, .form-signin .checkbox{
-    margin-bottom: 30px;
-}
+}*/
+
+
 .form-signin input[type="text"], .form-signin input[type="password"], .form-signin input[type="email"]
 {
-    margin-bottom: 20px;
     font-size: smaller;
 }
 
@@ -225,24 +266,48 @@ margin-bottom: 0;
     margin-top: 10px;
 }
 
-#login-page-text{
-    color:white;
+.form-signin label, .smaller {
+    color:black;
     font-size: smaller;
 }
 
-#login-page-text:active{
-    color:white;
+.smaller:active{
+    color:black;
 }
 
-#login-page-text:visited{
-    color:white;
+.smaller:visited{
+    color:black;
 }
 
-#registrace-overena .form-signin input:disabled{
+#register .form-signin input:disabled{
     background-color: rgb(181, 181, 181);
     text-align: center;
 }
 
+/********** DASHBOARD ************/
+
+.dashboard{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+/* *******  KALENDÁŘ ********** */
+
+.table-cal{
+    table-layout: fixed;
+    margin: 0 auto;
+
+}
+.table-cal td{
+    width: 150px;
+    height: 100px;
+    padding: 10px;
+    vertical-align: top;
+}
+.today{
+    background: rgb(236, 236, 236);
+}
 
 @media (max-width: 991.98px) {
     .btn-outline-login{
@@ -266,6 +331,17 @@ margin-bottom: 0;
     .contactbox{
         margin-bottom: 20px;
     }
+    .dashboard{
+        width: 100%;
+    }
+
+    .table-collapse{  
+        border-collapse: collapse;
+        width: 95%;
+        padding-left: 2.5%;
+        padding-right: 2.5%;    
+    }
+    
 }
 
 

@@ -1,3 +1,42 @@
+<?php
+
+session_start();
+
+include 'dbconn.php';
+
+// připojení k databázi  
+$conn = new mysqli($servername,$username,$password,$database);
+
+if(isset($_SESSION['user'])){
+
+    $email = $_SESSION['user'];
+    $query = "select * from cUzivatel where email = '$email'";
+    $run = mysqli_query($conn, $query);
+    if(mysqli_num_rows($run)>0){
+      $row = mysqli_fetch_array($run);
+      $cRole_id = $row['cRole_id'];
+    }
+    if($cRole_id == 1){
+        $setRole = "<span class='nav-link' id='uzivatelPrihlasen' style='font-size:15px; color:lightgray; margin-right: 0.5em;'>".$email."<span> </span><span class='badge badge-pill badge-danger'>Administrátor</span></span>";
+        $logButton = "<a href='index.php?logout=1' class='btn-outline-logout'>Odhlásit</a>";
+    }elseif($cRole_id == 2){
+        $setRole = "<span class='nav-link' id='uzivatelPrihlasen' style='font-size:15px; color:lightgray; margin-right: 0.5em;'>".$email."<span> </span><span class='badge badge-pill badge-warning'>Lékař</span></span>";
+        $logButton = "<a href='index.php?logout=1' class='btn-outline-logout'>Odhlásit</a>";
+    }elseif($cRole_id == 3){
+        $setRole = "<span class='nav-link' id='uzivatelPrihlasen' style='font-size:15px; color:lightgray; margin-right: 0.5em;'>".$email."<span> </span><span class='badge badge-pill badge-primary'>Pacient</span></span>";
+        $logButton = "<a href='index.php?logout=1' class='btn-outline-logout'>Odhlásit</a>";
+    }else{
+        $msg = "<div class='alert alert-danger'>Problém s cRole_id v databázi, kontaktujte správce</div>";
+    }
+
+}
+else{
+    $setRole = "<span class='nav-link' id='uzivatelPrihlasen' style='font-size:15px; color:lightgray; margin-right: 0.5em;'>Uživatel nepřihlášen</span>";
+    $logButton = "<a href='login.php' class='btn-outline-login'>Přihlásit</a>";
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -18,6 +57,18 @@
 
 </head>
   <body class="body" onload="load()">
+
+    <?php
+
+    if(isset($_GET['logout'])){
+        session_unset();
+        session_destroy();
+        header("location: index.php");
+        exit();
+    }
+
+    ?>
+
     <!-- Navigace -->
         <nav class="navbar navbar-expand-lg nav-back fixed-top" id="nav">
             <div class="container">
@@ -35,7 +86,7 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="navbar-nav ml-left">
                         <li class="nav-item">
-                            <a href="index.html" class="nav-link">Domů</a>
+                            <a href="index.php" class="nav-link">Domů</a>
                         </li>
                         <li class="nav-item">
                             <a href="#aboutus" class="nav-link">O nás</a>
@@ -49,24 +100,19 @@
                         <li class="nav-item">
                             <a href="#contact" class="nav-link">Kontakt</a>
                         </li>
+
+
                     </ul>
                 </div>
 
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <span class="nav-link" id="uzivatelPrihlasen" style="font-size:15px; color:lightgray;">lukas.tvrz@ssw.cz</span>
-                        </li>
-                        <li class="nav-item" >
-                            <a href="login.html"><button id="myButton" class="btn-outline-login" style="display: none;">
-                            Přihlásit
-                            </button></a>
+                            <?php echo $setRole ?>
                         </li>
 
-                        <li class="nav-item" style="display: inline;">
-                            <button id="myButton" class="btn-outline-logout">
-                            Odhlásit
-                            </button>
+                        <li class="nav-item">
+                            <?php echo $logButton ?>
                         </li>
                     </ul>
                 </div>
@@ -80,18 +126,20 @@
                 <!--<h1>Jste rekreační běžec, cyklista nebo triatlonista? </h1>-->
                 <h1>Centrum zdraví a zdravého pohybu</h1>
                 <h2 class="text-uppercase">Chcete zlepšit kondici, životní styl nebo se zbavit kil navíc?</h2>
-                <button id="linkButton" class="btn-outline-link"> 
-                    Chci se objednat
-                </button>
+                <a href="dashboard.php" id="linkButton" class="btn btn-success"> 
+                    Vstoupit do  aplikace
+                </a>
             </div>
         </section>
 
     <!-- Hlavní sekce stránky ( nepřihlášený uživatel (statická) -->
 
-        <section id="aboutus" class="aboutus mt-5 mb-2 py-3">
+    
+
+        <section id="aboutus" class="wrapper-index aboutus mt-5 mb-2 py-3">
             <div class="container">
                 <h2 class="text-left">O nás</h2>
-                <p id="plaintext">Ústav preventivního a sportovního lékařství (ÚPSL) byl založen v roce 1993 na půdě Fakulty tělesné výchovy a sportu Univerzity Karlovy jako jedno z prvních nestátních zdravotnických zařízení. Na našem pracovišti se vám věnují lékaři z oborů tělovýchovného lékařství, rehabilitace, kardiologie a vnitřního lékařství, kteří úzce spolupracující s týmem fyzioterapeutů. Jsme vybaveni moderními diagnostickými i terapeutickými přístroji. Staráme se o širokou veřejnost i profesionální sportovce.
+                <p id="plaintext">Centrum zdraví a zdravého pohybu bylo založeno v roce 2010 jako jedno z menších specializovaných nestátních zdravotnických zařízení. Na našem pracovišti se vám věnují lékaři z oborů tělovýchovného lékařství, rehabilitace, kardiologie a vnitřního lékařství, kteří úzce spolupracující s týmem fyzioterapeutů. Jsme vybaveni moderními diagnostickými i terapeutickými přístroji. Staráme se o širokou veřejnost i profesionální sportovce.
 
                 </p>   
                 <p id="plaintext">Ať už hledáte pomoc pro úlevu od bolesti, zlepšení tělesné kondice či zvýšení úrovně sportovního výkonu, obraťte se na naše specialisty. 
@@ -99,15 +147,16 @@
             </div>
         </section>
 
-        <section id="servicies" class="services mt-5 mb-2 py-3">
+        <section id="servicies" class="wrapper-index services mt-5 mb-2 py-3">
+
             <div class="container">
                 <div class="section-title">
-                    <h2 class="text-left">Služby</h2>
-                    <p id="plaintext">Nabízíme komplexní služby pro rekreační i výkonnostní běžce, cyklisty, triatlonisty a všechny, kdo chtějí získat kondici a zdraví. 
-                    </p>
-                    <p class="podnadpis text-left">Trénujte správně a bez rizika!</p>
-                    <p id="plaintext">Všechny služby (funkční vyšetření, analýzy techniky pohybu, fyzioterapii, tréninkové plány, výživové poradenství...) nabízíme samostatně nebo v oblíbených balíčcích.</p>
-                </div>
+                <h2 class="text-left">Služby</h2>
+                <p id="plaintext">Nabízíme komplexní služby pro rekreační i výkonnostní běžce, cyklisty, triatlonisty a všechny, kdo chtějí získat kondici a zdraví. 
+                </p>
+                <p class="podnadpis text-left">Trénujte správně a bez rizika!</p>
+                <p id="plaintext">Všechny služby (funkční vyšetření, analýzy techniky pohybu, fyzioterapii, tréninkové plány, výživové poradenství...) nabízíme samostatně nebo v oblíbených balíčcích.</p>
+            </div>
                 
                 <div class="row">
 
@@ -201,11 +250,11 @@
             </div>
         </section>
 
-        <section id="price" class="price mt-5 mb-2 py-3">
+        <section id="price" class="wrapper-index price mt-5 mb-2 py-3">
             <div class="container">
                 <h2 class="text-left">Ceník</h2>
-                <table class="table table-striped">
-                    <thead>
+                <table class="table table-sm table-striped">
+                    <thead class="thead-dark"> 
                       <tr>
                         <th>Služba</th>
                         <th>Cena</th>
@@ -262,7 +311,7 @@
             </div>
         </section>
 
-        <section id="contact" class="contact">
+        <section id="contact" class="wrapper-index contact">
             <div class="container">
                 <div class="section-title text-left mt-5">
                     <h2>Kontakt</h2>
@@ -308,8 +357,8 @@
                                 <input type="text" class="form-control" name="subject"
                                 placeholder="Předmět">
                             </div>
-                            <div class="form-group">
-                                <textarea name="message" class="form-control" rows="5"></textarea>
+                            <div class="ta form-group">
+                                <textarea name="message" class="form-control" rows="5" draggable="false"></textarea>
                             </div>
                             <div class="text-center">
                                 <button type="submit">Odeslat zprávu</button>

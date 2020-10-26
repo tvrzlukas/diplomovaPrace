@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Přihlásit</title>
+    <title>Přihlášení</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,25 +12,45 @@
     <!-- Javascript main -->
     <script src="js/main.js"></script>
   </head>
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
   <body class="body-login">
 
-    <div class="wrapper text-center">
 
-        <form action="" class="form-signin">
-            <a href="index.html">
-                <img src="/img/logo_male.png" width="300" height="75"  style="margin-bottom: 10px; margin-top: 10px;">
-            </a> 
-            <label id="login-page-text">Přihlašovací jméno</label><input type="text" class="form-control" name="username" placeholder="e-mail" required="" autofocus="">
-            <label id="login-page-text">Heslo</label><input type="password" class="form-control" name="password" placeholder="heslo" required="">
+    <div class="wrapper" id="wrapper_small">
+      <div class="text-center"> 
+        <a href="index.html">
+          <img src="/img/logo_male.png" width="300" height="75"  style="margin-bottom: 10px; margin-top: 10px;">
+        </a><br>
 
-            <button class="btn-outline-login btn-block"> Přihlásit</button>
-            <div class="login-page-div text-center"> 
+      </div>
 
-                <a href="#" id="login-page-text">Zapomenuté heslo</a><br>
-                <a href="register.html" id="login-page-text">Registrace nového uživatele</a> 
+      <form class="form-signin"> 
+        <div class="form-group">
 
-            </div>
-        </form>
+          <label for="login">Přihlašovací jméno</label>
+          <input type="text" class="form-control" id="login" placeholder="emailová adresa" >
+
+        </div>
+        <div class="form-group">
+
+          <label for="login">Heslo</label>
+          <input type="text" class="form-control" id="login" placeholder="emailová adresa" >
+
+        </div>
+        
+        <button class="btn-outline-register btn-block">Přihlásit</button>
+      </form>
+            
+      <div class="login-page-div text-center"> 
+
+          <a href="#" class="smaller">Zapomenuté heslo</a><br>
+          <a href="register.html" class="smaller">Registrace nového uživatele</a><br>
+          <a href="index.html" class="smaller">Zpět</a>
+          
+      </div>
 
     </div>
       
@@ -41,3 +61,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
+
+
