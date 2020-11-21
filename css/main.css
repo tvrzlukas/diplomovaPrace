@@ -1,10 +1,10 @@
 .body{
-    font-family: 'Montserrat';
+    /*font-family: 'Montserrat';*/
     background-color: rgb(235, 235, 235);
 }
 
 .body-login{
-    font-family: 'Montserrat';
+    /*font-family: 'Montserrat'; */
     background-color: rgb(235, 235, 235);
 }
 
@@ -13,6 +13,10 @@
     padding: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.karty{
+    margin-top: 20px;
 }
 
 .book{
@@ -27,6 +31,7 @@
     width: 180px;
     margin: 5px;
 }
+
 
 .nav-back{
     background: linear-gradient(to right, #a517ba, #5f1782);
@@ -155,7 +160,6 @@
     background: linear-gradient(to right, #a517ba, #5f1782);
     color: white;
 }
-
 .service button{
 position: relative;
 margin-bottom: 0;

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>Dashboard</title>
-    <!-- Required meta tags -->
+    <!-- Requird meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/main.css" />
@@ -12,7 +12,7 @@
   </head>
   <body class="body">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-fixed-left navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Dashboard</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@
             <li class="nav-item">
                 <span style="margin-right: 0.5em;color:white;">lukas.tvrz@ssw.cz<span> </span><span class="badge badge-pill badge-warning">Lékař</span></span>
                 <span style="margin-right: 0.5em;color:white; display: none;">lukas.tvrz@ssw.cz<span> </span><span class="badge badge-pill badge-primary">Pacient</span></span>
-                <span style="margin-right: 0.5em;color:white; display: none;>lukas.tvrz@ssw.cz<span> </span><span class="badge badge-pill badge-danger">Administrátor</span></span>
+                <span style="margin-right: 0.5em;color:white; display: none;">lukas.tvrz@ssw.cz<span> </span><span class="badge badge-pill badge-danger">Administrátor</span></span>
             </li>
             </ul>
             <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Odhlásit</button>
@@ -79,7 +79,7 @@
                   <td>Fyzioterapie</td>
                   <td>14:50PM - 15:00PM</td>
                   <td style="text-align: center;">  
-                      <button id="1" type="button" class="btn badge badge-success">Potvrdit</button>
+                      <form method='get'><input type='submit' href='verifybook.php?id=$row['id']' class='btn badge badge-success' value='Potvrdit'></form>
                       <button id="1" type="button" class="btn badge badge-danger">Zamítnout</button>
                   </td>
                 </tr>
@@ -91,7 +91,7 @@
                   <td>Výživové poradenství</td>
                   <td>10:20AM - 10:30AM</td>
                   <td style="text-align: center;">  
-                      <button id="1" type="button" class="btn badge badge-success">Potvrdit</button>
+                      <input id="1" type="button" class="btn badge badge-success" value="Potvrdit">
                       <button id="1" type="button" class="btn badge badge-danger">Zamítnout</button>
                   </td>
                 </tr>

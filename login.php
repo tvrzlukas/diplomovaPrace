@@ -6,6 +6,7 @@ include 'dbconn.php';
 
 // připojení k databázi  
 $conn = new mysqli($servername,$username,$password,$database);
+$conn->set_charset("utf8");
 
 if(isset($_POST['prihlasit'])){
   $email = mysqli_real_escape_string($conn, ($_POST['email']));

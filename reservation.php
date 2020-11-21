@@ -1,10 +1,43 @@
 <?php
 
+session_start();
+
+include 'dbconn.php';
+
+$conn = new mysqli($servername,$username,$password,$database);
+$conn->set_charset("utf8");
+
+if(isset($_SESSION['user'])){
+
+    $email = $_SESSION['user'];
+    $query = "select * from cUzivatel where email = '$email'";
+    $run = mysqli_query($conn, $query);
+    if(mysqli_num_rows($run)>0){
+      $row = mysqli_fetch_array($run);
+      $cRole_id = $row['cRole_id'];
+    }
+    if($cRole_id == 1){
+        $setRole = "<span style='margin-right: 0.5em;color:white;'>".$email."<span> </span><span class='badge badge-pill badge-danger'>Administrátor</span></span>";
+    }elseif($cRole_id == 2){
+        $setRole = "<span style='margin-right: 0.5em;color:white;'>".$email."<span> </span><span class='badge badge-pill badge-warning'>Lékař</span></span>";
+    }elseif($cRole_id == 3){
+        $setRole = "<span style='margin-right: 0.5em;color:white;'>".$email."<span> </span><span class='badge badge-pill badge-primary'>Pacient</span></span>";
+    }else{
+        $msg = "<div class='alert alert-danger'>Problém s cRole_id v databázi, kontaktujte správce</div>";
+    }
+    $conn->close();
+}
+else{
+    header("location: index.php");
+}
+
 function build_calendar($month, $year){
 
     include 'dbconn.php';
 
     $mysqli = new mysqli($servername,$username,$password,$database);
+    $mysqli->set_charset("utf8");
+ 
     /*$stmt = $mysqli->prepare("select * from bookings where MONTH(date) = ? AND YEAR(date) = ?");
     $stmt->bind_param('ss',$month,$year);
     $bookings = array();
@@ -108,15 +141,15 @@ function build_calendar($month, $year){
         if($dayOfWeek=='5'|| $dayOfWeek=='6'){
                 $calendar.= "<td><h5>$currentDay</h5> <button class='btn btn-warning btn-sm'>Víkend</button></td>";
         }
-        elseif($date<date('Y-m-d')){
+        elseif($date<=date('Y-m-d')){
                 $calendar.= "<td><h5>$currentDay</h5> <button class='btn btn-danger btn-sm'>N/A</button></td>";
         }else{
             $totalbookings = checkSlots($mysqli,$date);
-            if($totalbookings>8){
+            if($totalbookings == 9){
             $calendar.= "<td class='$today'><h5>$currentDay</h5> <a href='#' class='btn btn-danger btn-sm'>Termíny plné</a></td>";
                 }else{
             $availableslots = 9 - $totalbookings;
-            $calendar.= "<td class='$today'><h5>$currentDay</h5> <a href='book.php?date=".$date."' class='btn btn-success btn-sm'>Rezervovat</a>
+            $calendar.= "<td class='$today'><h5>$currentDay</h5> <a href='book.php?date=".$date."&lekar=".$lekari."' class='btn btn-success btn-sm'>Rezervovat</a>
                 <br><small><i>$availableslots míst zbývá</i><small></td>";
             }
         }
@@ -137,7 +170,8 @@ function build_calendar($month, $year){
 }
 
 function checkSlots($mysqli,$date){
-    $stmt = $mysqli->prepare("select * from bookings where date = ?");
+//  $stmt = $mysqli->prepare("select * from bookings where date = ?");
+    $stmt = $mysqli->prepare("select * from cRezervace where date = ? and isDeleted = 0");
     $stmt->bind_param('s',$date);
     $totalbookings = 0;
     if($stmt->execute()){
@@ -151,6 +185,7 @@ function checkSlots($mysqli,$date){
     }
     return $totalbookings;
 }
+
 
 
 
@@ -188,15 +223,13 @@ function checkSlots($mysqli,$date){
                 <a class="nav-link" href="settings.php">Nastavení</a>
               </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
+          <form class="form-inline my-2 my-lg-0" method="post">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <span style="margin-right: 0.5em;color:white;">lukas.tvrz@ssw.cz<span> </span><span class="badge badge-pill badge-warning">Lékař</span></span>
-                <span style="margin-right: 0.5em;color:white; display: none;">lukas.tvrz@ssw.cz<span> </span><span class="badge badge-pill badge-primary">Pacient</span></span>
-                <span style="margin-right: 0.5em;color:white; display: none;>lukas.tvrz@ssw.cz<span> </span><span class="badge badge-pill badge-danger">Administrátor</span></span>
+                <?php echo $setRole ?>
             </li>
             </ul>
-            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Odhlásit</button>
+            <a href="dashboard.php?logout=1" name="odhlasit" class="btn btn-outline-danger my-2 my-sm-0">Odhlásit</a>
           </form>
         </div>
     </nav>
@@ -206,6 +239,7 @@ function checkSlots($mysqli,$date){
             <div class="col-md-12">
                 <?php
 
+                    ECHO $msg;
                     $dateComponents = getdate();
                     if(isset($_GET['month'])&&isset($_GET['year'])){
                         $month = $_GET['month'];

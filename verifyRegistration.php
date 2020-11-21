@@ -1,10 +1,12 @@
 <?php
 
 session_start();
+
 include 'dbconn.php';
 
 // připojení k databázi  
 $conn = new mysqli($servername,$username,$password,$database);
+$conn->set_charset("utf8");
 
 if(isset($_POST['submit'])){
     $email = mysqli_real_escape_string($conn, ($_POST['email']));
@@ -71,7 +73,7 @@ if(isset($_POST['submit'])){
             
       <div class="login-page-div text-center"> 
 
-          <a href="index.php" class="smaller">Zpět</a>
+          <a href="login.php" class="smaller">Zpět</a>
           
       </div>
 
